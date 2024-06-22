@@ -9,7 +9,7 @@ import estruturaGrafo.Aresta;
 import estruturaGrafo.Grafo;
 import estruturaGrafo.Vertice;
 
-public class Aplicativo {
+public class AplicativoParte1 {
 
 	private static Scanner scanner = new Scanner(System.in);
 	
@@ -76,13 +76,7 @@ public class Aplicativo {
 		return scanner.nextInt();
 	}
 	
-	private static List<Vertice> preencherVertices(int quantVertice) {
-		List<Vertice> vertices = new ArrayList<Vertice>(quantVertice); 
-		for (int i = 1; i <= quantVertice; i++) {
-			vertices.add(new Vertice(gerarLegendaVertice(i)));
-		}
-		return vertices;
-	}
+	
 	
 	private static void limpaBuffer() {
 		scanner.nextLine();
@@ -92,8 +86,9 @@ public class Aplicativo {
 		Vertice vertice = null;
 		do {
 			System.out.printf("Informe o vértice de %s da aresta: \n", extremidade);
-			String legenda = scanner.nextLine();
+			int legenda = scanner.nextInt();
 			vertice = grafo.getVerticePorLegenda(legenda);
+			limpaBuffer();
 			if(vertice == null) {
 				System.out.println("Vértice não encontrado!");
 			}
@@ -121,13 +116,10 @@ public class Aplicativo {
 	
 	private static void criarGrafo(int quantVertice, int quantAresta) {
 		grafo = new Grafo(quantAresta, quantVertice);
-		grafo.adicionarVertices(preencherVertices(quantVertice));
 		grafo.adicionarArestas(preencherArestas(quantAresta));
 		
 	}
 	
-	public static char gerarLegendaVertice(int posicao) {
-        return (char) ('A' + posicao - 1);
-    }
+	
 
 }

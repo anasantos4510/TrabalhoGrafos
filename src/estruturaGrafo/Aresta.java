@@ -12,12 +12,12 @@ public class Aresta {
 		this.destino = destino;
 	}
 	
-	public String nomeVerticeOrigem() {
-		return origem.getNome();
+	public int legendaVerticeOrigem() {
+		return origem.getLegenda();
 	}
 	
-	public String nomeVerticeDestino() {
-		return destino.getNome();
+	public int legendaVerticeDestino() {
+		return destino.getLegenda();
 	}
 	
 	public int getPeso() {

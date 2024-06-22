@@ -4,17 +4,13 @@ import java.util.ArrayList;
 
 public class Vertice {
 	//private ArrayList<Aresta> incidentes = new ArrayList<Aresta>();
-	String nome;
+	int legenda;
 	
-	public Vertice(String nome) {
-		this.nome = nome;
+	public Vertice(int nome) {
+		this.legenda = nome;
 	}
 	
-	public Vertice(char nome) {
-		this.nome = Character.toString(nome);
-	}
-	
-	public String getNome() {
-		return nome;
+	public int getLegenda() {
+		return legenda;
 	}
 }

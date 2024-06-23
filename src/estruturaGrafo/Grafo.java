@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import util.Util;
+
 public class Grafo {
 	private ArrayList<Aresta> arestas;
 	private ArrayList<Vertice> vertices;
@@ -121,6 +123,8 @@ public class Grafo {
 			}
 			System.out.printf("\n");
 		}
+		
+		Util.paraFluxo("voltar...");
 	}
 	
 	private void imprimirListaAdjacencia() {
@@ -132,6 +136,8 @@ public class Grafo {
 			listaAdjacencia[i].forEach(vertice -> System.out.printf("%s\t", vertice.getLegenda()));
 			System.out.printf("\n");
 		}
+
+		Util.paraFluxo("voltar...");
 	}
 	
 	public void imprimirGrafo() {

@@ -24,8 +24,7 @@ public class Aresta {
 		return peso;
 	}
 	
-	public Vertice getVerticeDestino ()
-	{
+	public Vertice getVerticeDestino () {
 		return destino;
 	}
 }

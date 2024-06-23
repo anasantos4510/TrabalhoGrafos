@@ -8,6 +8,7 @@ import java.util.Scanner;
 import estruturaGrafo.Aresta;
 import estruturaGrafo.Grafo;
 import estruturaGrafo.Vertice;
+import util.Util;
 
 public class AplicativoParte1 {
 
@@ -20,30 +21,30 @@ public class AplicativoParte1 {
 	private static Grafo grafo;
 	
 	public static void main(String[] args) {
-	
-	do {
-		int opcao = menu();
-		
-		switch(opcao) {
-		case 1:
-			cadastrarGrafo();
-			break;
-		case 2:
-			grafo.imprimirGrafo();
-			break;
-		default:
-			System.exit(0);
-		}
-	}while(true);
-		
-		
+		Util.clear();
+		do {
+			int opcao = menu();
+			
+			switch(opcao) {
+				case 1:
+					cadastrarGrafo();
+				break;
+
+				case 2:
+					grafo.imprimirGrafo();
+				break;
+				
+				default:
+					System.exit(0);
+			}
+		} while(true);
 		
 	}
 	
 	private static int validaQauntidadeVertices(int quantVertice) {
 		while (quantVertice == 0) {
 			System.out.println("Quantidade de vértices inválida!");
-			System.out.println("Informe a quantidade de vértices:");
+			System.out.print("Informe a quantidade de vértices:");
 			quantVertice = scanner.nextInt();
 		}
 		return quantVertice;
@@ -60,32 +61,47 @@ public class AplicativoParte1 {
 	}
 	
 	private static void cadastrarGrafo() {
-		System.out.println("Informe a quantidade de arestas:");
+		System.out.print("Informe a quantidade de arestas: ");
 		int quantAresta = scanner.nextInt();
-		System.out.println("Informe a quantidade de vértices:");
+		System.out.print("\nQuantidade de arestas salvas. ");
+		Util.esperar(2);
+		Util.clear();
+
+		System.out.print("Informe a quantidade de vértices: ");
 		int quantVertice = scanner.nextInt();
 		quantVertice = validaQauntidadeVertices(quantVertice);
+		System.out.print("\nQuantidade de vértices salvos. ");
+		Util.esperar(2);
+		Util.clear();
 		
 		criarGrafo(quantVertice, quantAresta);
 	}
 	
 	private static int menu() {
-		System.out.println("1. Cadastrar Grafo");
-		System.out.println("2. Imprimir Grafo");
-		System.out.println("Informar operação:");
-		return scanner.nextInt();
+		System.out.println("|------------------------|");
+		System.out.println("|          Menu          |");
+		System.out.println("|========================|");
+		System.out.println("|1. Cadastrar Grafo      |");
+		System.out.println("|2. Imprimir Grafo       |");
+		System.out.println("|------------------------|");
+
+		System.out.print("\nInformar operação: ");
+		int value = scanner.nextInt();
+		Util.clear();
+
+		return value;
 	}
 	
 	
 	
-	private static void limpaBuffer() {
+	public static void limpaBuffer() {
 		scanner.nextLine();
 	}
 	
 	private static Vertice obterExtremidadeAresta(String extremidade) {
 		Vertice vertice = null;
 		do {
-			System.out.printf("Informe o vértice de %s da aresta: \n", extremidade);
+			System.out.printf("Informe o vértice de %s da aresta: ", extremidade);
 			int legenda = scanner.nextInt();
 			vertice = grafo.getVerticePorLegenda(legenda);
 			limpaBuffer();
@@ -103,14 +119,17 @@ public class AplicativoParte1 {
 		Vertice origem;
 		Vertice destino;
 		List<Aresta> arestas = new ArrayList<Aresta>(quantAresta);
+
 		for (int i = 1; i <= quantAresta; i++) {
-			System.out.printf("Informe o peso da aresta %d:", i);
+			System.out.printf("Informe o peso da aresta %d: ", i);
 			peso = validaPesoAresta(scanner.nextInt());
 			limpaBuffer();
 			origem = obterExtremidadeAresta(ORIGEM);
 			destino = obterExtremidadeAresta(DESTINO);
 			arestas.add(new Aresta(peso, origem, destino));
+			Util.clear();
 		}
+
 		return arestas;
 	}
 	

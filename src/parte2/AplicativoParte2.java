@@ -66,7 +66,7 @@ public class AplicativoParte2 {
 					System.out.print("Informe o vértice desejado: ");
 					verticeDesejado = Integer.parseInt(scanner.next());
 					int grau = grafo.getVertice(verticeDesejado).getGrau();
-					System.out.println("O vértice " + verticeDesejado + " tem o grau: " + grau);
+					System.out.println("O vértice v" + verticeDesejado + " tem o grau: " + grau);
 				break;
 
 				case 7: // Determinar se dois vértices são adjacentes. 
@@ -80,11 +80,11 @@ public class AplicativoParte2 {
 					for (Aresta aresta : v.getArestas()) {
 						
 						if(aresta.getVerticeOrigem().getLegenda() == verticeDesejado2 || aresta.getVerticeDestino().getLegenda() == verticeDesejado2) {
-							System.out.println("\nO vértice " + verticeDesejado + " é adjacente ao vértice " + verticeDesejado2); break;
+							System.out.println("\nO vértice v" + verticeDesejado + " é adjacente ao vértice v" + verticeDesejado2); break;
 						}
 						
 					}
-					System.out.println("\nO vértice " + verticeDesejado + " não é adjacente ao vértice " + verticeDesejado2);
+					System.out.println("\nO vértice v" + verticeDesejado + " não é adjacente ao vértice v" + verticeDesejado2);
 
 				break;
 
@@ -101,7 +101,7 @@ public class AplicativoParte2 {
 					System.out.println("Novo peso cadastrado para a aresta " + arestaDesejada);
 				break;
 
-				case 9: //  
+				case 9: //  Trocar dois vértices
 
 				break;
 
@@ -121,7 +121,7 @@ public class AplicativoParte2 {
 
 				break;
 
-				case 14: // 
+				case 14: // Criação de um menu de interação com usuário
 
 				break;
 				default:

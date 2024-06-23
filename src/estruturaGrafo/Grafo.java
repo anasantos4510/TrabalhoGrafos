@@ -184,4 +184,30 @@ public class Grafo {
 
 		return aresta.getVerticeDestino();
 	}
+
+	public Vertice getVertice(int v) {
+		return vertices.stream()
+						.filter(vertice -> vertice.getLegenda() == v)
+						.findFirst()
+						.get();
+	}
+	/**
+	 * Exibe vertices adjacentes à um vértice informado no parâmetro
+	 * Obs: Dois vértices são ditos adjacentes se existir uma aresta entre eles.
+	 * @param v
+	 */
+	public void exibeVerticesAdjacentes(int v) {
+		Vertice vertice =  this.getVertice(v);
+		
+		vertice.getArestas().stream()
+				.forEach(aresta -> System.out.println(aresta.getVerticeDestino().toString().equals("1") == false ? aresta.getVerticeDestino().toString() : ""));
+	}
+
+	
+	public void exibeArestasIncidentes(int v) {
+		Vertice vertice =  this.getVertice(v);
+		
+		vertice.exibeArestas();
+	}
+
 }

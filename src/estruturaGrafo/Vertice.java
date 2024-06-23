@@ -13,6 +13,11 @@ public class Vertice {
 	public void addAresta(Aresta arestas) {
 		this.arestas.add(arestas);
 	}
+
+	public ArrayList<Aresta> getArestas()
+	{
+		return this.arestas;
+	}
 	
 	public void exibeArestas() {
 		arestas.forEach(aresta -> System.out.println(aresta.toString()));
@@ -20,6 +25,11 @@ public class Vertice {
 
 	public int getLegenda() {
 		return legenda;
+	}
+
+	public int getGrau()
+	{
+		return this.arestas.size();
 	}
 
 	public String toString() {

@@ -21,6 +21,10 @@ public class Aresta {
 	public int legendaVerticeDestino() {
 		return destino.getLegenda();
 	}
+
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
 	
 	public int getPeso() {
 		return peso;

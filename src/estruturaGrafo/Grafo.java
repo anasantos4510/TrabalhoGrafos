@@ -158,4 +158,30 @@ public class Grafo {
 	public static char gerarLegendaVertice(int posicao) {
         return (char) ('A' + posicao - 1);
     }
+
+	public Aresta getAresta(String a) {
+		return arestas.stream()
+						.filter(a1 -> a1.toString().equals(a))
+						.findFirst()
+						.get();
+	}
+	
+
+	public Vertice getVerticeOrigem(int a) {
+	    Aresta aresta = arestas.stream()
+						.filter(a1 -> a1.legendaVerticeOrigem() == a)
+						.findFirst()
+						.get();
+
+		return aresta.getVerticeOrigem();
+	}
+
+	public Vertice getVerticeDestino(int a) {
+		Aresta aresta = arestas.stream()
+						.filter(a1 -> a1.legendaVerticeDestino() == a)
+						.findFirst()
+						.get();
+
+		return aresta.getVerticeDestino();
+	}
 }

@@ -7,7 +7,7 @@ import util.Util;
 
 public class AplicativoParte2 {
 
-	private static Scanner scanner = new Scanner(System.in);
+	static Scanner scanner = new Scanner(System.in);
 
 
 	
@@ -23,7 +23,13 @@ public class AplicativoParte2 {
 				break;
 
 				case 2: // Imprime todas arestas adjacentes a uma aresta "a" (informado pelo usuário).
+					System.out.print("Informe a aresta desejada: ");
+					String arestaDesejada = scanner.next();
 
+					System.out.println("\nArestas adjacentes: ");
+					grafo.getAresta(arestaDesejada).getVerticeOrigem().exibeArestas();
+					grafo.getAresta(arestaDesejada).getVerticeDestino().exibeArestas();
+					
 				break;
 
 				case 3: // Imprime todos os vértices adjacentes a um vértice "v", (informado pelo usuário). 
@@ -80,17 +86,20 @@ public class AplicativoParte2 {
 					
 					System.exit(0);
 			}
+			
+			Util.paraFluxo("prosseguir.");
 		}while(true);
 		
 	}
 	
 	private static int menu() {
-		System.out.println("|------------------------|");
-        System.out.println("|          Menu          |");
-        System.out.println("|========================|");
-        System.out.println("|1. Imprimir Grafo       |");
-        System.out.println("|2. Sair                 |");
-        System.out.println("|------------------------|");
+        System.out.println("|-------------------------------------|");
+        System.out.println("|                 Menu                |");
+        System.out.println("|=====================================|");
+        System.out.println("|1. Imprimir Grafo                    |");
+        System.out.println("|2. Imprimir todas arestas adjacentes |");
+        System.out.println("|3. Sair                              |");
+        System.out.println("|-------------------------------------|");
 
 		System.out.print("\nInformar operação: ");
 		int value = scanner.nextInt();

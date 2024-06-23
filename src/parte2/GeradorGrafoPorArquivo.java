@@ -24,23 +24,33 @@ public class GeradorGrafoPorArquivo {
 	
 	public static Grafo gerarGrafo (String filePath) {
 		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+			
             String linha;
             Grafo grafo = instanciarGrafo(br.readLine());
             
             List<Aresta> arestas = new ArrayList<>(grafo.totalArestas());
             List<Integer> dadosArestas = null;
+
             Vertice origem, destino;
+			
             while ((linha = br.readLine()) != null) {
             	dadosArestas = converterLinhaParaInt(valoresPorLinha(linha));
             	origem = grafo.getVerticePorLegenda(dadosArestas.get(POSICAO_ORIGEM));
             	destino = grafo.getVerticePorLegenda(dadosArestas.get(POSICAO_DESTINO));
-            	arestas.add(new Aresta(dadosArestas.get(POSICAO_PESO), origem, destino));
+
+				Aresta aresta = new Aresta(dadosArestas.get(POSICAO_PESO), origem, destino);
+				
+				origem.addAresta(aresta);
+				destino.addAresta(aresta);
+            	arestas.add(aresta);
             }
             grafo.adicionarArestas(arestas);
+
             return grafo;
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 		return null;
 	}
 	

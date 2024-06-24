@@ -137,7 +137,6 @@ public class Grafo {
 			System.out.printf("\n");
 		}
 
-		Util.paraFluxo("voltar...");
 	}
 	
 	public void imprimirGrafo() {
@@ -191,6 +190,30 @@ public class Grafo {
 						.findFirst()
 						.get();
 	}
+
+	public void trocaVertices(int v1, int v2) {
+		Vertice vertice_1 = this.getVertice(v1);
+		Vertice vertice_2 = this.getVertice(v2);
+		Vertice aux = vertice_1;
+		
+		for (Aresta aresta : vertice_1.getArestas()) {
+			if(aresta.getVerticeOrigem().getLegenda() == v1) {
+				aresta.setOrigem(vertice_2);
+			} else if(aresta.getVerticeDestino().getLegenda() == v1) {
+				aresta.setDestino(vertice_2);
+			}
+		}
+
+		for (Aresta aresta : vertice_2.getArestas()) {
+			if(aresta.getVerticeOrigem().getLegenda() == v2) {
+				aresta.setOrigem(aux);
+			} else if(aresta.getVerticeDestino().getLegenda() == v2) {
+				aresta.setDestino(aux);
+			}
+		}
+
+	}
+
 	/**
 	 * Exibe vertices adjacentes à um vértice informado no parâmetro
 	 * Obs: Dois vértices são ditos adjacentes se existir uma aresta entre eles.

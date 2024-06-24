@@ -67,8 +67,8 @@ vértices do grafo.
 
 14. Criação de um menu onde o usuário poderá interagir com a aplicação.
 
-## Parte 3 - Desafio
-Desafio (3 pontos extras):
+## Parte 3 - Desafio `(3 pontos extras)`
+
 Faça um método que verifique se um grafo é euleriano, usando o Algoritmo de Fleury.
 Se o grafo for euleriano, apresente o caminho. Para isso, terá que implementar um
 método que identifique se uma aresta é uma ponte. OBS: Pesquise por algoritmo de
@@ -77,7 +77,8 @@ Salve em um arquivo de texto os tempos computacionais necessários utilizando co
 teste, grafos aleatórios contendo 100, 1000, 10000 e 100000 vértices. OBS: Crie um
 método para gerar grafos no formato DIMACs.
 Exemplo de formato DIMACs:
-1 - Formato padrão DIMACS (Exemplo, o grafo a seguir tem a seguinte representação
+
+1. Formato padrão DIMACS (Exemplo, o grafo a seguir tem a seguinte representação
 DIMACS):
 Onde:
 Na primeira linha, o primeiro valor representa o número de vértices, e o segundo o

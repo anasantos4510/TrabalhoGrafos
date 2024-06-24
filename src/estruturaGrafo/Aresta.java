@@ -4,22 +4,20 @@ public class Aresta {
 	private int peso;
 	private Vertice origem;
 	private Vertice destino;
-	private String nome;
 	
 	public Aresta (int peso, Vertice origem, Vertice destino)
 	{
 		this.peso = peso;
 		this.origem = origem;
 		this.destino = destino;
-		this.nome = origem + "," + destino;
 	}
 	
 	public int legendaVerticeOrigem() {
-		return origem.getLegenda();
+		return this.origem.getLegenda();
 	}
 	
 	public int legendaVerticeDestino() {
-		return destino.getLegenda();
+		return this.destino.getLegenda();
 	}
 
 	public void setPeso(int peso) {
@@ -27,7 +25,7 @@ public class Aresta {
 	}
 	
 	public int getPeso() {
-		return peso;
+		return this.peso;
 	}
 	
 	public Vertice getVerticeDestino() {
@@ -38,7 +36,15 @@ public class Aresta {
 		return this.origem;
 	}
 
+	public void setOrigem(Vertice v) {
+		this.origem = v;
+	}
+
+	public void setDestino(Vertice v) {
+		this.destino = v;
+	}
+
 	public String toString() {
-		return this.nome;
+		return this.origem.getLegenda() + "," + this.destino.getLegenda();
 	}
 }

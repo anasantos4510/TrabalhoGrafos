@@ -102,7 +102,13 @@ public class AplicativoParte2 {
 				break;
 
 				case 9: //  Trocar dois vértices
+					System.out.print("Informe os vértices que deseja trocar: ");
+					System.out.print("\n\n1º: ");
+					verticeDesejado = Integer.parseInt(scanner.next().replace("v", ""));
+					System.out.print("2º: ");
+					verticeDesejado2 = Integer.parseInt(scanner.next().replace("v", ""));
 
+					grafo.trocaVertices(verticeDesejado, verticeDesejado2);
 				break;
 
 				case 10: //    
@@ -149,6 +155,7 @@ public class AplicativoParte2 {
         System.out.println("|6. Imprimir o grau de um vértice.                             |");
         System.out.println("|7. Verificar se dois vértices são adjacentes.                 |");
         System.out.println("|8. Substituir o peso de uma aresta.                           |");
+        System.out.println("|9. Torcar dois vértices.                                      |");
         System.out.println("|15. Sair                                                      |");
         System.out.println("|--------------------------------------------------------------|");
 

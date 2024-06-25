@@ -9,6 +9,7 @@ import util.BuscaLargura;
 import util.BuscaProfundidade;
 import util.Dijkstra;
 import util.FloydWarshall;
+import util.TesteTemposComputacionais;
 import util.Util;
 
 public class AplicativoParte2 {
@@ -19,7 +20,7 @@ public class AplicativoParte2 {
 	
 	public static void main(String[] args) {
 		Util.clear();
-		Grafo grafo = GeradorGrafoPorArquivo.gerarGrafo("arquivosdimacs/GrafoExemplo.txt");
+		Grafo grafo = GeradorGrafoPorArquivo.gerarGrafo("arquivos/input/arquivosdimacs/GrafoExemplo.txt");
 		int verticeDesejado, verticeDesejado2;
 		String arestaDesejada = "";
 		do {
@@ -156,7 +157,7 @@ public class AplicativoParte2 {
 				break;
 
 				case 14: // Bonus
-					
+					//TesteTemposComputacionais
 				break;
 				default:
 					System.out.println("Encerrando...");

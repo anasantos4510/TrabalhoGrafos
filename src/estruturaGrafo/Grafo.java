@@ -5,8 +5,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -231,6 +233,95 @@ public class Grafo {
 		Vertice vertice =  this.getVertice(v);
 		
 		vertice.exibeArestas();
+	}
+
+	public boolean isEuleriano() {
+        int oddDegreeVertices = 0;
+        for (Vertice v : vertices) {
+            if (v.getArestas().size() % 2 != 0) {
+                oddDegreeVertices++;
+            }
+        }
+        return oddDegreeVertices == 0 || oddDegreeVertices == 2;
+    }
+
+    public List<Vertice> fleury() {
+        if (!isEuleriano()) {
+            return null;
+        }
+
+        List<Vertice> caminho = new ArrayList<>();
+        Deque<Vertice> stack = new ArrayDeque<>();
+        Vertice v = vertices.get(0); // Começa pelo primeiro vértice
+
+        stack.push(v);
+
+        while (!stack.isEmpty()) {
+            v = stack.peek();
+            if (v.getArestas().isEmpty()) {
+                caminho.add(stack.pop());
+            } else {
+                Aresta aresta = v.getArestas().get(0);
+                Vertice destino = aresta.getVerticeDestino();
+                v.getArestas().remove(aresta);
+                destino.getArestas().remove(aresta);
+                stack.push(destino);
+            }
+        }
+
+        return caminho;
+    }
+
+    public void imprimirCaminhoEuleriano() {
+        List<Vertice> caminho = fleury();
+        if (caminho == null) {
+            System.out.println("O grafo não é Euleriano.");
+        } else {
+            System.out.println("Caminho Euleriano:");
+            for (Vertice v : caminho) {
+                System.out.print(v.getLegenda() + " ");
+            }
+            System.out.println();
+        }
+    }
+
+	public List<Aresta> encontrarPontes() {
+		int numVertices = vertices.size();
+		int[] tempoDescoberta = new int[numVertices];
+		int[] low = new int[numVertices];
+		boolean[] visitado = new boolean[numVertices];
+		List<Aresta> pontes = new ArrayList<>();
+		int[] tempo = {0};
+	
+		for (int i = 0; i < numVertices; i++) {
+			if (!visitado[i]) {
+				encontrarPontesDFS(vertices.get(i), -1, tempoDescoberta, low, visitado, tempo, pontes);
+			}
+		}
+	
+		return pontes;
+	}
+	
+	private void encontrarPontesDFS(Vertice u, int parent, int[] tempoDescoberta, int[] low, boolean[] visitado, int[] tempo, List<Aresta> pontes) {
+		int uIndex = u.getLegenda() - 1;
+		visitado[uIndex] = true;
+		tempoDescoberta[uIndex] = low[uIndex] = ++tempo[0];
+	
+		for (Aresta aresta : u.getArestas()) {
+			Vertice v = aresta.getVerticeDestino();
+			int vIndex = v.getLegenda() - 1;
+			if (!visitado[vIndex]) {
+				encontrarPontesDFS(v, uIndex, tempoDescoberta, low, visitado, tempo, pontes);
+	
+				low[uIndex] = Math.min(low[uIndex], low[vIndex]);
+	
+				if (low[vIndex] > tempoDescoberta[uIndex]) {
+					pontes.add(aresta);
+				}
+			} else if (vIndex != parent) {
+				low[uIndex] = Math.min(low[uIndex], tempoDescoberta[vIndex]);
+			}
+		}
 	}
 
 	public int getNumVertices() {

@@ -40,10 +40,10 @@ public class Grafo {
 		return totalVertices;
 	}
 	
-	private Optional<Aresta> buscaArestaAdjacente(Vertice verticeOrigem, Vertice verticeDestino) {
-		return arestas.stream().filter(aresta -> aresta.legendaVerticeOrigem() == verticeOrigem.getLegenda() 
-				&& aresta.legendaVerticeDestino() == verticeDestino.getLegenda()).findAny();
-	}
+	public Optional<Aresta> buscaArestaAdjacente(Vertice verticeOrigem, Vertice verticeDestino) {
+        return arestas.stream().filter(aresta -> aresta.legendaVerticeOrigem() == verticeOrigem.getLegenda() &&
+                aresta.legendaVerticeDestino() == verticeDestino.getLegenda()).findAny();
+    }
 	
 	private List<Vertice> ordenaVerticesPorLegenda() {
 		return vertices.stream().sorted(Comparator.comparingInt(Vertice::getLegenda)).collect(Collectors.toList());
@@ -233,4 +233,23 @@ public class Grafo {
 		vertice.exibeArestas();
 	}
 
+	public int getNumVertices() {
+		return vertices.size();
+	}
+
+	public ArrayList<Vertice> getVertices() {
+		return vertices;
+	}
+	
+	public ArrayList<Aresta> getArestas() {
+		return arestas;
+	}
+
+	public List<Vertice> getAdjacentes(Vertice v) {
+		List<Vertice> adjacentes = new ArrayList<>();
+		for (Aresta aresta : v.getArestas()) {
+			adjacentes.add(aresta.getVerticeDestino());
+		}
+		return adjacentes;
+	}
 }
